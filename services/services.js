@@ -15,3 +15,17 @@ export const getPopularMovies = async () => {
         return [];
     }
 };
+
+// GET method to fetch upcoming movies
+
+export const getUpcomingMovies = async () => {
+    try {
+        const response = await axios.get(
+            `${apiUrl}/movie/upcoming?${apiKey}`,
+        );
+        return response.data.results;
+    } catch (error) {
+        console.error('Error fetching upcoming movies: ', error);
+        return [];
+    }
+};
