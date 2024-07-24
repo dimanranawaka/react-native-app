@@ -1,40 +1,137 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {getPopularMovies} from '../services/services';
+import React, {useEffect, useState} from 'react';
+import {
+  ActivityIndicator,
+  View,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
+import {
+  getPopularMovies,
+  getUpcomingMovies,
+  getPopularTv,
+  getFamilyMovies,
+  getDocumentaryMovies,
+} from '../services/services';
+import {SliderBox} from 'react-native-image-slider-box';
+import react from 'react';
+import List from '../components/List';
+import Error from '../components/Error';
 
+const dimentions = Dimensions.get('screen');
 const Home = () => {
-  const [movie, setMovie] = useState(null);
+  const [moviesImages, setMoviesImages] = useState();
+  const [popularMovies, setPopularMovies] = useState();
+  const [popularTv, setPopularTv] = useState();
+  const [familyMovies, setFamilyMovies] = useState();
+  const [documentaryMovies, setDocumentaryMovies] = useState();
+
+  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  const getData = () => {
+    return Promise.all([
+      getUpcomingMovies(),
+      getPopularMovies(),
+      getPopularTv(),
+      getFamilyMovies(),
+      getDocumentaryMovies(),
+    ]);
+  };
 
   useEffect(() => {
-    getPopularMovies().then(movies => {
-      if (movies.length > 0) {
-        setMovie(movies[0]);
-      }
-    });
+    getData()
+      .then(
+        ([
+          upcomingMoviesData,
+          popularMoviesData,
+          popularTvData,
+          familyMoviesData,
+          documentaryMoviesData,
+        ]) => {
+          const moviesImagesArray = [];
+          upcomingMoviesData.forEach(movie => {
+            moviesImagesArray.push(
+              'https://image.tmdb.org/t/p/w500' + movie.poster_path,
+            );
+          });
+
+          setMoviesImages(moviesImagesArray);
+          setPopularMovies(popularMoviesData);
+          setPopularTv(popularTvData);
+          setFamilyMovies(familyMoviesData);
+          setDocumentaryMovies(documentaryMoviesData);
+        },
+      )
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoaded(true);
+      });
   }, []);
+
   return (
-    <View style={styles.container}>
-      {movie ? (
-        <>
-          <Text style={styles.text}>Movie Name : {movie.original_title}</Text>
-          <Text style={styles.text}>Language : {movie.original_language}</Text>
-          <Text style={styles.text}>Release Date : {movie.release_date}</Text>
-        </>
-      ) : (
-        <Text style={styles.text}>No movie found</Text>
+    <react.Fragment>
+      {/* Upcoming Movies */}
+      {loaded && !error && (
+        <ScrollView>
+          {moviesImages && (
+            <View style={styles.sliderContainer}>
+              <SliderBox
+                images={moviesImages}
+                dotStyle={styles.sliderStyle}
+                sliderBoxHeight={dimentions.height / 1.5}
+                autoplay={true}
+                circleLoop={true}
+              />
+            </View>
+          )}
+          {/* Popular Movies */}
+          {popularMovies && (
+            <View style={styles.carousel}>
+              <List title={'Popular Movies'} content={popularMovies} />
+            </View>
+          )}
+          {/* Popular TV Shows */}
+          {popularTv && (
+            <View style={styles.carousel}>
+              <List title={'Popular TV Shows'} content={popularTv} />
+            </View>
+          )}
+          {/* Family Movies */}
+          {familyMovies && (
+            <View style={styles.carousel}>
+              <List title={'Family Movies'} content={familyMovies} />
+            </View>
+          )}
+          {/* Documentary Movies */}
+          {documentaryMovies && (
+            <View style={styles.carousel}>
+              <List title={'Documentary Movies'} content={documentaryMovies} />
+            </View>
+          )}
+        </ScrollView>
       )}
-    </View>
+      {!loaded && <ActivityIndicator size="large" />}
+      {error && <Error />}
+    </react.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  sliderContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
-    fontSize: 20,
+  sliderStyle: {
+    height: 0,
+  },
+  carousel: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
