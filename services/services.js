@@ -17,7 +17,6 @@ export const getPopularMovies = async () => {
 };
 
 // GET method to fetch upcoming movies
-
 export const getUpcomingMovies = async () => {
     try {
         const response = await axios.get(
@@ -26,6 +25,19 @@ export const getUpcomingMovies = async () => {
         return response.data.results;
     } catch (error) {
         console.error('Error fetching upcoming movies: ', error);
+        return [];
+    }
+};
+
+// GET method to fetch popular TV shows
+export const getPopularTvShows = async () => {
+    try {
+        const response = await axios.get(
+            `${apiUrl}/tv/popular?${apiKey}`,
+        );
+        return response.data.results;
+    } catch (error) {
+        console.error('Error fetching popular TV shows: ', error);
         return [];
     }
 };
