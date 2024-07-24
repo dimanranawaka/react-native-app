@@ -28,7 +28,10 @@ const App = () => {
   return (
     <View style={styles.container}>
       {movie ? (
-        <Text style={styles.text}>{movie.original_title}</Text>
+        <>
+          <Text style={styles.text}>Movie : {movie.original_title}</Text>
+          <Text style={styles.text}>Language : {movie.original_language}</Text>
+        </>
       ) : (
         <Text style={styles.text}>No movie found</Text>
       )}
