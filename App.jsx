@@ -1,19 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import axios from 'axios';
 
 const getPopularMovies = async () => {
-  const response = await axios.get(
-    'https://api.themoviedb.org/3/movie/550?api_key=2a2d4105c6f076353ee5274f587aa247',
-  );
-  console.log(JSON.stringify(response.data.results[0], null, 2));
+  try {
+    const response = await axios.get(
+      'https://api.themoviedb.org/3/movie/popular?api_key=2a2d4105c6f076353ee5274f587aa247',
+    );
+    return response.data.results;
+  } catch (error) {
+    console.error('Error fetching popular movies: ', error);
+    return [];
+  }
 };
 
 const App = () => {
-  getPopularMovies();
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    getPopularMovies().then(movies => {
+      if (movies.length > 0) {
+        setMovie(movies[0]);
+      }
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello, Diman Ranawaka!</Text>
+      {movie ? (
+        <Text style={styles.text}>{movie.original_title}</Text>
+      ) : (
+        <Text style={styles.text}>No movie found</Text>
+      )}
     </View>
   );
 };
