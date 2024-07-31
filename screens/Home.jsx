@@ -19,7 +19,7 @@ import List from '../components/List';
 import Error from '../components/Error';
 
 const dimentions = Dimensions.get('screen');
-const Home = () => {
+const Home = ({navigation}) => {
   const [moviesImages, setMoviesImages] = useState();
   const [popularMovies, setPopularMovies] = useState();
   const [popularTv, setPopularTv] = useState();
@@ -96,19 +96,31 @@ const Home = () => {
           {/* Popular TV Shows */}
           {popularTv && (
             <View style={styles.carousel}>
-              <List title={'Popular TV Shows'} content={popularTv} />
+              <List
+                navigation={navigation}
+                title={'Popular TV Shows'}
+                content={popularTv}
+              />
             </View>
           )}
           {/* Family Movies */}
           {familyMovies && (
             <View style={styles.carousel}>
-              <List title={'Family Movies'} content={familyMovies} />
+              <List
+                navigation={navigation}
+                title={'Family Movies'}
+                content={familyMovies}
+              />
             </View>
           )}
           {/* Documentary Movies */}
           {documentaryMovies && (
             <View style={styles.carousel}>
-              <List title={'Documentary Movies'} content={documentaryMovies} />
+              <List
+                navigation={navigation}
+                title={'Documentary Movies'}
+                content={documentaryMovies}
+              />
             </View>
           )}
         </ScrollView>
