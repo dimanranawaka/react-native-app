@@ -49,7 +49,17 @@ const Detail = ({route, navigation}) => {
           />
           <View style={styles.container}>
             <Text style={styles.movieTitle}>{movieDetail.title}</Text>
-            {movieDetail.genres && <View></View>}
+            {movieDetail.genres && (
+              <View style={styles.genresContainer}>
+                {movieDetail.genres.map(genre => {
+                  return (
+                    <Text style={styles.genre} key={genre.id}>
+                      {genre.name}
+                    </Text>
+                  );
+                })}
+              </View>
+            )}
           </View>
         </ScrollView>
       )}
@@ -72,6 +82,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
+  },
+  genresContainer: {
+    flexDirection: 'row',
+    alignContent: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  genre: {
+    marginRight: 10,
+    fontWeight: 'bold',
   },
 });
 
