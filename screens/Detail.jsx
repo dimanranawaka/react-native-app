@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text} from 'react-native';
 
 const Detail = ({route, navigation}) => {
-  const movieDetail = route.params.movieDetail;
+  const movieId = route.params.movieDetail.id;
+
+  const [detail, setDetail] = useState();
+
   return (
     <React.Fragment>
       <Text>{movieDetail.title}</Text>
