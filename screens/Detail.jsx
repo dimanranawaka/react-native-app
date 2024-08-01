@@ -1,9 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, Image, StyleSheet} from 'react-native';
+import {
+  ScrollView,
+  Image,
+  StyleSheet,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
 import {getMovie} from '../services/services';
 // import {ScrollView} from 'react-native-gesture-handler';
 
 const placeholderImage = require('../assets/images/placeholder.png');
+
+const height = Dimensions.get('screen').height;
 
 const Detail = ({route, navigation}) => {
   const movieId = route.params.movieId;
@@ -37,15 +45,14 @@ const Detail = ({route, navigation}) => {
           />
         </ScrollView>
       )}
+      {!loaded && <ActivityIndicator size="large" />}
     </React.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
   image: {
-    height: 200,
-    width: 120,
-    borderRadius: 20,
+    height: height / 2.5,
   },
 });
 
