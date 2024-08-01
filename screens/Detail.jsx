@@ -49,6 +49,7 @@ const Detail = ({route, navigation}) => {
           />
           <View style={styles.container}>
             <Text style={styles.movieTitle}>{movieDetail.title}</Text>
+            {movieDetail.genres && <View></View>}
           </View>
         </ScrollView>
       )}
