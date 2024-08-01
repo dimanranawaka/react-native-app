@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Text} from 'react-native';
 import {getMovie} from '../services/services';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Detail = ({route, navigation}) => {
   const movieId = route.params.movieId;
@@ -17,7 +18,11 @@ const Detail = ({route, navigation}) => {
 
   return (
     <React.Fragment>
-      {loaded && <Text>{movieDetail.title}</Text>}
+      {loaded && (
+        <ScrollView>
+          <Text>{movieDetail.title}</Text>
+        </ScrollView>
+      )}
     </React.Fragment>
   );
 };
