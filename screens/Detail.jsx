@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Dimensions,
   ActivityIndicator,
+  View,
 } from 'react-native';
 
 import {getMovie} from '../services/services';
@@ -46,7 +47,9 @@ const Detail = ({route, navigation}) => {
                 : placeholderImage
             }
           />
-          <Text>{movieDetail.title}</Text>
+          <View style={styles.container}>
+            <Text style={styles.movieTitle}>{movieDetail.title}</Text>
+          </View>
         </ScrollView>
       )}
       {!loaded && <ActivityIndicator size="large" />}
@@ -57,6 +60,17 @@ const Detail = ({route, navigation}) => {
 const styles = StyleSheet.create({
   image: {
     height: height / 2.5,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  movieTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 
