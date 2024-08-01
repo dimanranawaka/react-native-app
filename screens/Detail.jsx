@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
+
 import {
+  Text,
   ScrollView,
   Image,
   StyleSheet,
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
+
 import {getMovie} from '../services/services';
 // import {ScrollView} from 'react-native-gesture-handler';
 
@@ -43,6 +46,7 @@ const Detail = ({route, navigation}) => {
                 : placeholderImage
             }
           />
+          <Text>{movieDetail.title}</Text>
         </ScrollView>
       )}
       {!loaded && <ActivityIndicator size="large" />}
