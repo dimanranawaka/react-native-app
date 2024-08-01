@@ -5,17 +5,19 @@ import {getMovie} from '../services/services';
 const Detail = ({route, navigation}) => {
   const movieId = route.params.movieDetail.id;
 
-  const [detail, setDetail] = useState();
+  const [movieDetail, setMovieDetail] = useState();
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     getMovie(movieId).then(data => {
-      setDetail(data);
+      setMovieDetail(movieData);
+      setLoaded(true);
     });
-  }, []);
+  }, [movieId]);
 
   return (
     <React.Fragment>
-      <Text>{movieDetail.title}</Text>
+      {loaded && <Text>{movieDetail.title}</Text>}
     </React.Fragment>
   );
 };
