@@ -33,6 +33,10 @@ const Detail = ({route, navigation}) => {
     });
   }, [movieId]);
 
+  const videoShown = () => {
+    setModalVisible(true);
+  };
+
   return (
     <React.Fragment>
       {loaded && (
@@ -53,7 +57,7 @@ const Detail = ({route, navigation}) => {
             />
             <View style={styles.container}>
               <View style={styles.playButton}>
-                <PlayButton></PlayButton>
+                <PlayButton handlePress={videoShown} />
               </View>
               <Text style={styles.movieTitle}>{movieDetail.title}</Text>
               {movieDetail.genres && (
