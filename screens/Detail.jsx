@@ -24,6 +24,7 @@ const Detail = ({route, navigation}) => {
   const [movieDetail, setMovieDetail] = useState();
   const [loaded, setLoaded] = useState(false);
   const [rating, setRating] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     getMovie(movieId).then(movieData => {
@@ -80,7 +81,7 @@ const Detail = ({route, navigation}) => {
               </Text>
             </View>
           </ScrollView>
-          <Modal></Modal>
+          <Modal animationType="slide" visible={modalVisible}></Modal>
         </View>
       )}
       {!loaded && <ActivityIndicator size="large" />}
