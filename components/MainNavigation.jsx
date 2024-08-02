@@ -9,7 +9,10 @@ const Stack = createStackNavigator();
 class MainNavigation extends React.PureComponent {
   render() {
     return (
-      <Stack.Navigator headerMode={'screen'}>
+      <Stack.Navigator
+        screenOptions={{
+          headerMode: 'screen',
+        }}>
         <Stack.Screen
           name="Home"
           component={Home}
