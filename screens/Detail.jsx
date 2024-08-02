@@ -7,11 +7,12 @@ import {
   Dimensions,
   ActivityIndicator,
   View,
+  Pressable,
 } from 'react-native';
+import PlayButton from '../components/PlayButton';
 import StarRating from 'react-native-star-rating-widget';
 import {getMovie} from '../services/services';
 import dateFormat from 'dateformat';
-import PlayButton from '../components/PlayButton';
 
 const placeholderImage = require('../assets/images/placeholder.png');
 const height = Dimensions.get('screen').height;
@@ -48,7 +49,7 @@ const Detail = ({route, navigation}) => {
             }
           />
           <View style={styles.container}>
-            <View>
+            <View style={styles.playButton}>
               <PlayButton></PlayButton>
             </View>
             <Text style={styles.movieTitle}>{movieDetail.title}</Text>
@@ -113,6 +114,11 @@ const styles = StyleSheet.create({
   },
   release: {
     fontWeight: 'bold',
+  },
+  playButton: {
+    position: 'absolute',
+    top: -25,
+    right: 20,
   },
 });
 
