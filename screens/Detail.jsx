@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   View,
   Pressable,
+  Modal,
 } from 'react-native';
 import PlayButton from '../components/PlayButton';
 import StarRating from 'react-native-star-rating-widget';
@@ -34,50 +35,53 @@ const Detail = ({route, navigation}) => {
   return (
     <React.Fragment>
       {loaded && (
-        <ScrollView>
-          <Image
-            resizeMode="cover"
-            style={styles.image}
-            source={
-              movieDetail.poster_path
-                ? {
-                    uri:
-                      'https://image.tmdb.org/t/p/w500' +
-                      movieDetail.poster_path,
-                  }
-                : placeholderImage
-            }
-          />
-          <View style={styles.container}>
-            <View style={styles.playButton}>
-              <PlayButton></PlayButton>
-            </View>
-            <Text style={styles.movieTitle}>{movieDetail.title}</Text>
-            {movieDetail.genres && (
-              <View style={styles.genresContainer}>
-                {movieDetail.genres.map(genre => (
-                  <Text style={styles.genre} key={genre.id}>
-                    {genre.name}
-                  </Text>
-                ))}
-              </View>
-            )}
-            <StarRating
-              rating={movieDetail.vote_average / 2}
-              onChange={newRating => setRating(newRating)} // Update the rating state on change
-              starSize={30}
-              starStyle={{marginHorizontal: 2}}
-              maxStars={5}
-              color={'gold'}
+        <View>
+          <ScrollView>
+            <Image
+              resizeMode="cover"
+              style={styles.image}
+              source={
+                movieDetail.poster_path
+                  ? {
+                      uri:
+                        'https://image.tmdb.org/t/p/w500' +
+                        movieDetail.poster_path,
+                    }
+                  : placeholderImage
+              }
             />
-            <Text style={styles.overview}>{movieDetail.overview}</Text>
+            <View style={styles.container}>
+              <View style={styles.playButton}>
+                <PlayButton></PlayButton>
+              </View>
+              <Text style={styles.movieTitle}>{movieDetail.title}</Text>
+              {movieDetail.genres && (
+                <View style={styles.genresContainer}>
+                  {movieDetail.genres.map(genre => (
+                    <Text style={styles.genre} key={genre.id}>
+                      {genre.name}
+                    </Text>
+                  ))}
+                </View>
+              )}
+              <StarRating
+                rating={movieDetail.vote_average / 2}
+                onChange={newRating => setRating(newRating)} // Update the rating state on change
+                starSize={30}
+                starStyle={{marginHorizontal: 2}}
+                maxStars={5}
+                color={'gold'}
+              />
+              <Text style={styles.overview}>{movieDetail.overview}</Text>
 
-            <Text style={styles.release}>
-              {'Release date: ' +
-                dateFormat(movieDetail.release_date, 'mmmm dS, yyyy')}
-            </Text>
-          </View>
-        </ScrollView>
+              <Text style={styles.release}>
+                {'Release date: ' +
+                  dateFormat(movieDetail.release_date, 'mmmm dS, yyyy')}
+              </Text>
+            </View>
+          </ScrollView>
+          <Modal></Modal>
+        </View>
       )}
       {!loaded && <ActivityIndicator size="large" />}
     </React.Fragment>
