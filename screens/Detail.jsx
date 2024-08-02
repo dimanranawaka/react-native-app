@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import {getMovie} from '../services/services';
+import StarRating from 'react-native-star-rating';
 // import {ScrollView} from 'react-native-gesture-handler';
 
 const placeholderImage = require('../assets/images/placeholder.png');
@@ -60,6 +61,7 @@ const Detail = ({route, navigation}) => {
                 })}
               </View>
             )}
+            <Text>{movieDetail.vote_average}</Text>
           </View>
         </ScrollView>
       )}
