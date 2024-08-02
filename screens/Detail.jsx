@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-
 import {
   Text,
   ScrollView,
@@ -9,20 +8,18 @@ import {
   ActivityIndicator,
   View,
 } from 'react-native';
-
+import StarRating from 'react-native-star-rating-widget';
 import {getMovie} from '../services/services';
-import StarRating from 'react-native-star-rating';
-// import {ScrollView} from 'react-native-gesture-handler';
 
 const placeholderImage = require('../assets/images/placeholder.png');
-
 const height = Dimensions.get('screen').height;
 
 const Detail = ({route, navigation}) => {
-  const movieId = route.params.movieId;
+  const {movieId} = route.params;
 
   const [movieDetail, setMovieDetail] = useState();
   const [loaded, setLoaded] = useState(false);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
     getMovie(movieId).then(movieData => {
@@ -52,16 +49,21 @@ const Detail = ({route, navigation}) => {
             <Text style={styles.movieTitle}>{movieDetail.title}</Text>
             {movieDetail.genres && (
               <View style={styles.genresContainer}>
-                {movieDetail.genres.map(genre => {
-                  return (
-                    <Text style={styles.genre} key={genre.id}>
-                      {genre.name}
-                    </Text>
-                  );
-                })}
+                {movieDetail.genres.map(genre => (
+                  <Text style={styles.genre} key={genre.id}>
+                    {genre.name}
+                  </Text>
+                ))}
               </View>
             )}
-            <Text>{movieDetail.vote_average}</Text>
+            <StarRating
+              rating={rating}
+              onChange={newRating => setRating(newRating)} // Update the rating state on change
+              starSize={30}
+              starStyle={{marginHorizontal: 2}}
+              maxStars={5}
+              color={'gold'}
+            />
           </View>
         </ScrollView>
       )}

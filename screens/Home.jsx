@@ -14,18 +14,17 @@ import {
   getDocumentaryMovies,
 } from '../services/services';
 import {SliderBox} from 'react-native-image-slider-box';
-import react from 'react';
 import List from '../components/List';
 import Error from '../components/Error';
 
-const dimentions = Dimensions.get('screen');
+const dimensions = Dimensions.get('screen');
+
 const Home = ({navigation}) => {
   const [moviesImages, setMoviesImages] = useState();
   const [popularMovies, setPopularMovies] = useState();
   const [popularTv, setPopularTv] = useState();
   const [familyMovies, setFamilyMovies] = useState();
   const [documentaryMovies, setDocumentaryMovies] = useState();
-
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -72,7 +71,7 @@ const Home = ({navigation}) => {
   }, []);
 
   return (
-    <react.Fragment>
+    <React.Fragment>
       {/* Upcoming Movies */}
       {loaded && !error && (
         <ScrollView>
@@ -81,7 +80,7 @@ const Home = ({navigation}) => {
               <SliderBox
                 images={moviesImages}
                 dotStyle={styles.sliderStyle}
-                sliderBoxHeight={dimentions.height / 1.5}
+                sliderBoxHeight={dimensions.height / 1.5}
                 autoplay={true}
                 circleLoop={true}
               />
@@ -90,7 +89,11 @@ const Home = ({navigation}) => {
           {/* Popular Movies */}
           {popularMovies && (
             <View style={styles.carousel}>
-              <List title={'Popular Movies'} content={popularMovies} />
+              <List
+                navigation={navigation}
+                title={'Popular Movies'}
+                content={popularMovies}
+              />
             </View>
           )}
           {/* Popular TV Shows */}
@@ -127,7 +130,7 @@ const Home = ({navigation}) => {
       )}
       {!loaded && <ActivityIndicator size="large" />}
       {error && <Error />}
-    </react.Fragment>
+    </React.Fragment>
   );
 };
 
