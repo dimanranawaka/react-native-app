@@ -34,7 +34,7 @@ const Detail = ({route, navigation}) => {
   }, [movieId]);
 
   const videoShown = () => {
-    setModalVisible(true);
+    setModalVisible(!modalVisible);
   };
 
   return (
@@ -85,7 +85,13 @@ const Detail = ({route, navigation}) => {
               </Text>
             </View>
           </ScrollView>
-          <Modal animationType="slide" visible={modalVisible}></Modal>
+          <Modal animationType="slide" visible={modalVisible}>
+            <View style={styles.videoModal}>
+              <Pressable onPress={videoShown}>
+                <Text>{'Click Me'}</Text>
+              </Pressable>
+            </View>
+          </Modal>
         </View>
       )}
       {!loaded && <ActivityIndicator size="large" />}
@@ -128,6 +134,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -25,
     right: 20,
+  },
+  videoModal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
