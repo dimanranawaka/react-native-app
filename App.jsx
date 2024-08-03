@@ -1,15 +1,23 @@
 import 'react-native-gesture-handler';
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import MainNavigation from './components/MainNavigation';
-
-// const Stack = createNativeStackNavigator();
+import SplashScreen from './screens/SplashScreen';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust the timeout duration as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <NavigationContainer>
-      <MainNavigation />
+      {isLoading ? <SplashScreen /> : <MainNavigation />}
     </NavigationContainer>
   );
 };

@@ -4976,7 +4976,7 @@ react-is@^16.7.0:
 react-is@^17.0.1:
   version "17.0.2"
 
-react-native-animatable@^1.2.4:
+react-native-animatable@^1.2.4, react-native-animatable@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/react-native-animatable/-/react-native-animatable-1.4.0.tgz"
   integrity sha512-DZwaDVWm2NBvBxf7I0wXKXLKb/TxDnkV53sWhCvei1pRyTX3MVFpkvdYBknNBqPrxYuAIlPxEp7gJOidIauUkw==
@@ -5005,6 +5005,11 @@ react-native-gesture-handler@^2.17.1, "react-native-gesture-handler@>= 1.0.0":
   resolved "git+ssh://git@github.com/megamaxs1234/react-native-image-slider-box.git#e210de5ba62ef765faa6f3609e0dd0426f89fb1d"
   dependencies:
     react-native-snap-carousel apurba-bware/react-native-snap-carousel#5a7f809e921262e4e2f646e8cfc4da85f7bd663d
+
+react-native-linear-gradient@^2.8.3:
+  version "2.8.3"
+  resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz"
+  integrity sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==
 
 react-native-reanimated@^3.14.0:
   version "3.14.0"

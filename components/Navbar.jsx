@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
+import * as Animatable from 'react-native-animatable';
 
 const propTypes = {
   main: PropTypes.bool,
@@ -16,6 +17,7 @@ const propTypes = {
 const defaultProps = {
   main: false,
 };
+
 class Navbar extends React.PureComponent {
   state = {};
   render() {
@@ -24,8 +26,10 @@ class Navbar extends React.PureComponent {
       <SafeAreaView>
         {main ? (
           <View style={styles.mainNav}>
-            <Image
-              style={styles.logo}
+            <Animatable.Image
+              animation="pulse"
+              iterationCount="infinite"
+              style={[styles.logo, styles.glowingEffect]}
               source={require('../assets/images/movies.png')}
             />
             <TouchableOpacity
@@ -36,7 +40,7 @@ class Navbar extends React.PureComponent {
             </TouchableOpacity>
           </View>
         ) : (
-          <View>
+          <View style={styles.backNav}>
             <TouchableOpacity
               onPress={() => {
                 navigation.goBack();
@@ -59,13 +63,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 120,
-    height: 120,
-    padding: 10,
-    borderRadius: 10,
+    width: 100,
+    height: 100,
   },
   backNav: {
     padding: 10,
+  },
+  glowingEffect: {
+    shadowColor: '#00E676', // Glowing color
+    shadowOffset: {width: 0, height: 0},
+    shadowOpacity: 1,
+    shadowRadius: 20,
+    elevation: 20, // For Android
   },
 });
 
