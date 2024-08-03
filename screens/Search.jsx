@@ -1,8 +1,15 @@
-const Search = () => {
+import React from 'react';
+import {SafeAreaView, View, Text} from 'react-native';
+
+const Search = ({navigation}) => {
   return (
-    <div>
-      <h1>Search</h1>
-    </div>
+    <React.Fragment>
+      <SafeAreaView>
+        <View>
+          <Text>{'search'}</Text>
+        </View>
+      </SafeAreaView>
+    </React.Fragment>
   );
 };
 
