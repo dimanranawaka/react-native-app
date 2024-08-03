@@ -1,11 +1,17 @@
 import React ,{useState} from 'react';
 import { SafeAreaView, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import {searchMovieTv} from "../services/services";
 
 const Search = ({navigation}) => {
   const [text, onChangeText] = useState();
+  const [searchResults, setSearchResults] = useState();
+
   const onsubmit = query => {
-    console.log(query);
+    searchMovieTv(query,'movie').then(data => {
+      // setSearchResults(data.results);
+      console.log(data);
+    });
   };
   return (
     <React.Fragment>
