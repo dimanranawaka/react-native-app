@@ -1,13 +1,15 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import {SafeAreaView, View, TextInput,StyleSheet} from 'react-native';
 
 const Search = ({navigation}) => {
+  const [text, onChangeText] = useState();
   return (
     <React.Fragment>
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View>
           <TextInput
             style={styles.input}
+            placeholder={'Search Movie or TV Show'}
             onChangeText={onChangeText}
             value={text}
           />
@@ -19,10 +21,16 @@ const Search = ({navigation}) => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
+    borderRadius: 15,
+    borderWidth: 0.5,
+    height: 50,
+    padding: 8,
+  },
+  container: {
     padding: 10,
+    paddingTop: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
