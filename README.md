@@ -1,79 +1,120 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🎬 React Native Movie App
 
-# Getting Started
+<p align="center">
+  <img src="./ss1.jpg" alt="App Screenshot 1" width="200"/>
+  <img src="./ss2.jpg" alt="App Screenshot 2" width="200"/>
+  <img src="./ss3.jpg" alt="App Screenshot 3" width="200"/>
+</p>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+<p align="center">
+  <a href="https://github.com/dimanranawaka/react-native-app/issues">
+    <img src="https://img.shields.io/github/issues/dimanranawaka/react-native-app" alt="Issues">
+  </a>
+  <a href="https://github.com/dimanranawaka/react-native-app/network/members">
+    <img src="https://img.shields.io/github/forks/dimanranawaka/react-native-app" alt="Forks">
+  </a>
+  <a href="https://github.com/dimanranawaka/react-native-app/stargazers">
+    <img src="https://img.shields.io/github/stars/dimanranawaka/react-native-app" alt="Stars">
+  </a>
+  <a href="https://github.com/dimanranawaka/react-native-app/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/dimanranawaka/react-native-app" alt="License">
+  </a>
+</p>
 
-## Step 1: Start the Metro Server
+---
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🚀 Project Overview
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Welcome to the **React Native Movie App**! This project is designed to provide a comprehensive movie browsing experience, featuring movie catalogs, detailed movie information, and video playback.
 
-```bash
-# using npm
-npm start
+### Key Features
 
-# OR using Yarn
-yarn start
-```
+- **🎞️ Movie Catalog and Slider:** Browse through a vast catalog of movies with a sleek slider.
+- **📄 Movie Details:** Detailed information about each movie.
+- **▶️ Video Playback:** Watch movie trailers and videos within the app.
+- **💎 User Interface and Experience:** Modern and intuitive UI/UX for a seamless experience.
 
-## Step 2: Start your Application
+---
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## 🛠️ Technologies Used
 
-### For Android
+- **React Native CLI:** For robust mobile app development.
+- **React Navigation:** For smooth screen navigation.
+- **Axios:** To make API requests.
+- **TMDB Movie Database API:** Fetching movie data from TMDB.
+- **External Packages:** For media playback and other functionalities.
 
-```bash
-# using npm
-npm run android
+---
 
-# OR using Yarn
-yarn android
-```
+## 🛠️ Installation
 
-### For iOS
+To get started with the React Native Movie App, follow these steps:
 
-```bash
-# using npm
-npm run ios
+1. **Clone the Repository:**
 
-# OR using Yarn
-yarn ios
-```
+    ```bash
+    git clone https://github.com/dimanranawaka/react-native-app.git
+    cd react-native-app
+    ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+2. **Install Dependencies:**
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+    ```bash
+    npm install
+    ```
 
-## Step 3: Modifying your App
+3. **Set Up Environment Variables:**
 
-Now that you have successfully run the app, let's modify it.
+   Create a `.env` file in the root directory and add the necessary environment variables for TMDB API.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+4. **Run the Development Server:**
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+    ```bash
+    npm start
+    ```
 
-## Congratulations! :tada:
+---
 
-You've successfully run and modified your React Native App. :partying_face:
+## 💻 Usage
 
-### Now what?
+Once the application is up and running, you can:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+1. **Browse Movies:** Explore the movie catalog.
+2. **View Details:** Click on any movie to see detailed information.
+3. **Watch Trailers:** Enjoy video playback within the app.
 
-# Troubleshooting
+---
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## 🤝 Contributing
 
-# Learn More
+We welcome contributions to enhance the React Native Movie App! To contribute:
 
-To learn more about React Native, take a look at the following resources:
+1. **Fork the Repository**
+2. **Create a New Branch:** (`git checkout -b feature-branch`)
+3. **Make Your Changes** and **Commit Them:** (`git commit -m 'Add new feature'`)
+4. **Push to the Branch:** (`git push origin feature-branch`)
+5. **Open a Pull Request**
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Please ensure your code adheres to our coding guidelines and includes relevant tests.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+---
+
+## 📬 Contact Information
+
+For any inquiries or feedback, please contact:
+
+- **Diman Ranawaka**
+- Email: [dimanranawaka@example.com](mailto:dimanranawaka@example.com)
+- GitHub: [dimanranawaka](https://github.com/dimanranawaka)
+
+---
+
+<p align="center">
+  Made 🧑‍💻🛠️ by <a href="https://github.com/dimanranawaka">Diman Ranawaka</a>
+</p>
